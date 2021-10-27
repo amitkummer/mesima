@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from tasks.models import Task, Person
 
-class TaskSerizlier(serializers.ModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
