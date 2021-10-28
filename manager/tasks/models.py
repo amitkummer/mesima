@@ -10,7 +10,7 @@ class Task(models.Model):
         ('active', 'active'),
         ('done', 'done'),
     ])
-    ownerId = models.ForeignKey('Person', to_field='id', on_delete=models.CASCADE)
+    ownerId = models.ForeignKey('Person', on_delete=models.CASCADE)
 
 class Person(models.Model):
     name = models.CharField(max_length=1000)
