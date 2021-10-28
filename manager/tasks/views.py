@@ -24,7 +24,9 @@ class PersonViewSet(viewsets.ModelViewSet):
             serializer = TaskSerializer(person_tasks, many=True)
             return Response(serializer.data)
         else:
-            serializer = TaskSerializer(data=request.data)
+            data = request.data.copy()
+            data['ownerId'] = pk
+            serializer = TaskSerializer(data=data)
             if serializer.is_valid():
                 task = serializer.save()
                 return Response(headers={'Location':'Raz', 'x-Created-Id':task.id}, status=status.HTTP_201_CREATED)
