@@ -10,10 +10,13 @@ class Task(models.Model):
         ('active', 'active'),
         ('done', 'done'),
     ])
-    ownerId = models.ForeignKey('Person', on_delete=models.CASCADE)
+    ownerId = models.ForeignKey('Person', to_field='id', on_delete=models.CASCADE)
 
 class Person(models.Model):
     name = models.CharField(max_length=1000)
     email = models.EmailField(unique=True)
     favoriteProgrammingLanguage = models.CharField(max_length=1000)
-    activeTaskCount = models.IntegerField()
+    
+    @property
+    def activeTaskCount(self):
+        return Task.objects.filter(ownerId=self.id).count()
