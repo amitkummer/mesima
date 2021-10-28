@@ -26,8 +26,15 @@ class PersonViewSet(viewsets.ModelViewSet):
         else:
             serializer = TaskSerializer(data=request.data)
             if serializer.is_valid():
-                task = Task(serializer.data)
-                task.save()
-                return Response({'status': 'created'})
+                task = serializer.save()
+                return Response(headers={'Location':'Raz', 'x-Created-Id':task.id}, status=status.HTTP_201_CREATED)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def create(self, request):
+        serializer = PersonSerializer(data=request.data)
+        if serializer.is_valid():
+            person = serializer.save()
+            return Response(headers={'Location':'Raz', 'x-Created-Id':person.id}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
