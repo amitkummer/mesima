@@ -39,8 +39,8 @@ class PersonListTests(APITestCase):
                         data={'name':'Ido', 'email': 'ido@gmail.com', 'favoriteProgrammingLanguage': 'Python'})
         self.assertEqual(response.status_code, 201)
         id = Person.objects.filter(name='Ido').get().id
-        self.assertEqual(response.headers['Location'], f'/people/{id}')
-        self.assertEqual(response.headers['x-Created-Id'], id)
+        self.assertEqual(response.headers['Location'], f'people/{id}')
+        self.assertEqual(response.headers['x-Created-Id'], str(id))
 
     def test_post_400(self):
         response = self.client.post(reverse('person-list'), 
@@ -105,8 +105,8 @@ class PersonDetailTests(APITestCase):
             data={'title':'a tour of c++', 'details':'details', 'dueDate':date.today(), 'status':'active'})
         self.assertEqual(response.status_code, 201)
         id = Task.objects.filter(title='a tour of c++').get().id
-        self.assertEqual(response.headers['Location'], f'/tasks/{id}')
-        self.assertEqual(response.headers['x-Created-Id'], id)
+        self.assertEqual(response.headers['Location'], f'tasks/{id}')
+        self.assertEqual(response.headers['x-Created-Id'], str(id))
         
     def test_post_tasks_nested_400(self):
         response = self.client.post(reverse('person-tasks', args=[self.person.id]),
