@@ -1,0 +1,18 @@
+apiVersion: k3d.io/v1alpha2
+kind: Simple
+
+name: amit-mini-project
+image: rancher/k3s:v1.20.2-k3s1
+
+# Expose ports 80 via 8080 and 443 via 8443.
+ports:
+  - port: 3080:80
+    nodeFilters:
+      - loadbalancer
+  - port: 3443:443
+    nodeFilters:
+      - loadbalancer
+
+# Create local registry 'k3d-development-registry'.
+registries:
+  create: true

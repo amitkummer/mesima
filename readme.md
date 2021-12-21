@@ -1,3 +1,18 @@
+# Development Instructions
+
+To create the cluster, deploy and watch files:
+
+```s
+$ k3d cluster create --config k3d.yaml
+$ tilt up
+```
+
+To delete the cluster:
+
+```s
+$ k3d cluster delete amit-mini-project
+```
+
 # DRF Useful Links
 
 - A solution to the wierd API endpoinds in the form of `user/id/tasks` ([link](https://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/#refactoring-to-use-viewsets)).
