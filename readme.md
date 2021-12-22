@@ -4,6 +4,7 @@ To create the cluster, deploy and watch files:
 
 ```s
 $ k3d cluster create --config k3d.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/reactive-tech/kubegres/v1.15/kubegres.yaml
 $ tilt up
 ```
 

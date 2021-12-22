@@ -73,3 +73,33 @@ spec:
             name: manager
             port: 
               name: http
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: manager-db
+type: Opaque
+stringData:
+  superUserPassword: postgresSuperUserPsw
+  replicationUserPassword: postgresReplicaPsw
+---
+apiVersion: kubegres.reactive-tech.io/v1
+kind: Kubegres
+metadata:
+  name: manager-db
+spec:
+   replicas: 3
+   image: postgres:14.1-alpine
+   database:
+      size: 200Mi
+   env:
+      - name: POSTGRES_PASSWORD
+        valueFrom:
+           secretKeyRef:
+              name: manager-db
+              key: superUserPassword
+      - name: POSTGRES_REPLICATION_PASSWORD
+        valueFrom:
+           secretKeyRef:
+              name: manager-db
+              key: replicationUserPassword
