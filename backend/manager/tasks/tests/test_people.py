@@ -95,6 +95,24 @@ class PersonDetailTests(APITestCase):
         self.assertContains(response, 'dueDate')
         self.assertContains(response, 'status')
         self.assertContains(response, 'ownerId')
+
+    def test_get_tasks_nested_get_params_active(self):
+        response = self.client.get(reverse('person-tasks', args=[self.person.id]) + '?status=active')
+        content = json.loads(response.content)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(content), 1) # Multiple persons
+
+        self.assertEqual(content[0]['status'], 'active')
+
+    def test_get_tasks_nested_get_params_done(self):
+        response = self.client.get(reverse('person-tasks', args=[self.person.id]) + '?status=done')
+        content = json.loads(response.content)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(content), 1) # Multiple persons
+
+        self.assertEqual(content[0]['status'], 'done')
     
     def test_get_tasks_nested_404(self):
         response = self.client.get(reverse('person-tasks', args=[1337]))
