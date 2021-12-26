@@ -48,7 +48,7 @@ class TaskDetailTests(APITestCase):
     def test_get_status_nested(self):
         response = self.client.get(reverse('task-status', args=[self.another_task.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, "{ 'done' }")
+        self.assertEqual(response.data['status'], 'done')
 
     def test_get_status_nested_404(self):
         response = self.client.get(reverse('task-status', args=[1337]))
@@ -70,7 +70,7 @@ class TaskDetailTests(APITestCase):
         response = self.client.get(reverse('task-owner', args=[self.another_task.id]))
         self.assertEqual(response.status_code, 200)
         # DRF response here is wierd because of the foreign key relation, but looks good on web API so welp.
-        # self.assertEqual(response.data, self.another_task.ownerId.id)
+        self.assertEqual(response.data, self.another_task.ownerId.id)
 
     def test_get_owner_nested_404(self):
         response = self.client.get(reverse('task-owner', args=[1337]))

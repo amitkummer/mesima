@@ -16,10 +16,10 @@ class TaskViewSet(viewsets.ModelViewSet):
         try:
             task = Task.objects.filter(id=pk).get()
         except Task.DoesNotExist:
-            return Response("{ id does not exist }", status=status.HTTP_404_NOT_FOUND)
+            return Response(f'A task with the id {pk} does not exist', status=status.HTTP_404_NOT_FOUND)
 
         if request.method == 'GET':
-            return Response(f"{{ '{task.status}' }}")
+            return Response({'status': task.status})
         else:
             serializer = TaskSerializer(task, data=request.data, partial=True)
             if serializer.is_valid():
@@ -32,10 +32,10 @@ class TaskViewSet(viewsets.ModelViewSet):
         try:
             task = Task.objects.filter(id=pk).get()
         except Task.DoesNotExist:
-            return Response("{ id does not exist }", status=status.HTTP_404_NOT_FOUND)
+            return Response(f'A task with the id {pk} does not exist', status=status.HTTP_404_NOT_FOUND)
         
         if request.method == 'GET':
-            return Response(f"{{ '{task.ownerId}' }}")
+            return Response(task.ownerId.id)
         else:
             serializer = TaskSerializer(task, data=request.data, partial=True)
             if serializer.is_valid():
@@ -61,11 +61,11 @@ class PersonViewSet(viewsets.ModelViewSet):
         try:
             Person.objects.filter(id=pk).get()
         except Person.DoesNotExist:
-            return Response("{ id does not exist }", status=status.HTTP_404_NOT_FOUND)
+            return Response(f'A person with the id {pk} does not exist', status=status.HTTP_404_NOT_FOUND)
         if request.method == 'GET':
             person_tasks = Task.objects.filter(ownerId=pk)
             if person_tasks.count() < 1:
-                return Response(data="{'Tasks do not exist'}", status=status.HTTP_404_NOT_FOUND)
+                return Response(data='Tasks do not exist', status=status.HTTP_404_NOT_FOUND)
             serializer = TaskSerializer(person_tasks, many=True)
             return Response(serializer.data)
         else:
