@@ -14,6 +14,16 @@ To delete the cluster:
 $ k3d cluster delete amit-mini-project
 ```
 
+## Running the Tests
+
+Tests are easiest to run using sqlite. Use the following sequence of commands:
+
+```s
+$Env:DB="sqlite"
+poetry shell
+python manage.py test
+```
+
 # DRF Useful Links
 
 - A solution to the wierd API endpoinds in the form of `user/id/tasks` ([link](https://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/#refactoring-to-use-viewsets)).
