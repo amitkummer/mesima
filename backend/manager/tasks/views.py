@@ -64,6 +64,9 @@ class PersonViewSet(viewsets.ModelViewSet):
             return Response(f'A person with the id {pk} does not exist', status=status.HTTP_404_NOT_FOUND)
         if request.method == 'GET':
             person_tasks = Task.objects.filter(ownerId=pk)
+            if (request.query_params.get('status', False)):
+                _status = request.query_params['status']
+                person_tasks = person_tasks.filter(status=_status)
             if person_tasks.count() < 1:
                 return Response(data='Tasks do not exist', status=status.HTTP_404_NOT_FOUND)
             serializer = TaskSerializer(person_tasks, many=True)
