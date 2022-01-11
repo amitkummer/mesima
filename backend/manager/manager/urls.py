@@ -19,6 +19,8 @@ from rest_framework.routers import DefaultRouter
 
 from tasks import views
 
+# Declaratively map DRF views to urls using DefulatRouter.
+# https://www.django-rest-framework.org/api-guide/routers/#defaultrouter
 router = DefaultRouter()
 router.register(r'tasks', views.TaskViewSet)
 router.register(r'people', views.PersonViewSet)

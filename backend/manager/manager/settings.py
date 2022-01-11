@@ -88,6 +88,7 @@ DATABASES = {
     }
 }
 
+# If the DB environment variable is set to `sqlite`, switch from postgres to sqlite.
 if (os.getenv('DB') == 'sqlite'):
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',

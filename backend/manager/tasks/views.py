@@ -11,6 +11,9 @@ class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+    # tasks/:id/owner endpoint.
+    # Action is marked for routing using the @action decorator.
+    # https://www.django-rest-framework.org/api-guide/viewsets/#marking-extra-actions-for-routing
     @action(detail=True, methods=['get', 'put'])
     def status(self, request, pk):
         try:
@@ -43,6 +46,7 @@ class TaskViewSet(viewsets.ModelViewSet):
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    # Modify create action to return unusual headers for POST request.
     def create(self, request):
         serializer = TaskSerializer(data=request.data)
         if serializer.is_valid():
