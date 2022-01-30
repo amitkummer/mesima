@@ -39,4 +39,5 @@ jobs:
       env:
         DB: sqlite
       run: >
+        cd backend/manager
         python manage.py test
