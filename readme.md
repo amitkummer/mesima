@@ -1,5 +1,9 @@
 # Welcome to Mesimä
 
+<p align="center">
+  <img src="https://img.shields.io/github/workflow/status/amitkummer/mesima/Integration?label=integration">
+</p>
+
 This is the source of Mesimä (pronounced Mesi-mah). It is a RESTful HTTP application for task managment, written in Python.
 
 Mesimä was created with ❤️ using [Django Rest Framework](https://www.django-rest-framework.org/) and [PostgreSQL](https://www.postgresql.org/).
