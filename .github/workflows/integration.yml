@@ -40,4 +40,4 @@ jobs:
         DB: sqlite
       run: >
         cd backend/manager
-        python manage.py test
+        && python manage.py test
