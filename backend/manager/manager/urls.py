@@ -22,10 +22,7 @@ from tasks import views
 # Declaratively map DRF views to urls using DefulatRouter.
 # https://www.django-rest-framework.org/api-guide/routers/#defaultrouter
 router = DefaultRouter()
-router.register(r'tasks', views.TaskViewSet)
-router.register(r'people', views.PersonViewSet)
+router.register(r"tasks", views.TaskViewSet)
+router.register(r"people", views.PersonViewSet)
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
-]
+urlpatterns = [path("admin/", admin.site.urls), path("api/", include(router.urls))]

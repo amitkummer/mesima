@@ -8,28 +8,53 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Person',
+            name="Person",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=1000)),
-                ('email', models.EmailField(max_length=254, unique=True)),
-                ('favoriteProgrammingLanguage', models.CharField(max_length=1000)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=1000)),
+                ("email", models.EmailField(max_length=254, unique=True)),
+                ("favoriteProgrammingLanguage", models.CharField(max_length=1000)),
             ],
         ),
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=1000)),
-                ('details', models.CharField(max_length=1000)),
-                ('dueDate', models.DateField()),
-                ('status', models.CharField(choices=[('active', 'active'), ('done', 'done')], max_length=100)),
-                ('ownerId', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.person')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=1000)),
+                ("details", models.CharField(max_length=1000)),
+                ("dueDate", models.DateField()),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("active", "active"), ("done", "done")], max_length=100
+                    ),
+                ),
+                (
+                    "ownerId",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="tasks.person"
+                    ),
+                ),
             ],
         ),
     ]
