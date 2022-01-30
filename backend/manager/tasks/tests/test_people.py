@@ -120,7 +120,7 @@ class PersonDetailTests(APITestCase):
 
     def test_delete(self):
         response = self.client.delete(reverse("person-detail", args=[self.person.id]))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 204)
 
     def test_get_tasks_nested(self):
         response = self.client.get(reverse("person-tasks", args=[self.person.id]))
