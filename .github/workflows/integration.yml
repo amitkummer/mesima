@@ -28,6 +28,7 @@ jobs:
         POETRY_VIRTUALENVS_CREATE: false
       run: >
         pip3 install poetry
+        && cd backend
         && poetry install
 
     - name: Format
