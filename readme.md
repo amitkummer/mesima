@@ -2,6 +2,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/amitkummer/mesima/Integration?label=integration">
+  <img src="https://img.shields.io/github/v/tag/amitkummer/mesima">
+  <img src="https://img.shields.io/github/license/amitkummer/mesima">
 </p>
 
 This is the source of Mesimä (pronounced Mesi-mah). It is a RESTful HTTP application for task managment, written in Python.
