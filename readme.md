@@ -16,9 +16,9 @@ Mesimä was created with ❤️ using [Django Rest Framework](https://www.django
 Since our Docker image is hosted on Github's container registry, it is possible to run the app using Dokcer, **without even cloning** the repository.
 
 Note though, that the application will run using sqlite3 as it's database and *not* postgres. If you want to run the application using postgres,
-refer to [Delopment Instructions: Running the Application](#running-the-application).
+refer to [Development Instructions: Running the Application](#running-the-application).
 
-First, create the database file, and store it inside a named volume `mesima-data`:
+First, create the database file, and store it inside a named volume `mesima-data`, using:
 
 ```
 docker run -e "DB=sqlite" --volume mesima-data:/backend --entrypoint "python" ghcr.io/amitkummer/mesima:latest manage.py migrate
