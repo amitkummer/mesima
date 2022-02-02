@@ -11,11 +11,16 @@ This is the source of Mesimä (pronounced Mesi-mah). It is a RESTful HTTP applic
 
 Mesimä was created with ❤️ using [Django Rest Framework](https://www.django-rest-framework.org/) and [PostgreSQL](https://www.postgresql.org/).
 
+<p align="center">
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#documentation">Documentation</a>
+</p>
+
 # Quick Start
 
 Since our Docker image is hosted on Github's container registry, it is possible to run the app using Dokcer, **without even cloning** the repository.
 
-Note though, that the application will run using sqlite3 as it's database and *not* postgres. If you want to run the application using postgres,
+Note though, that the application will run using sqlite as it's database and *not* postgres. If you want to run the application using postgres,
 refer to [Development Instructions: Running the Application](#running-the-application).
 
 First, create the database file, and store it inside a named volume `mesima-data`, using:
@@ -91,6 +96,6 @@ The Django app and project were generated using `django create project` and `dja
 Consequentially, a basic understanding of Django's [getting started tutorial](https://docs.djangoproject.com/en/4.0/intro/tutorial01/) should be enough to understand the role of each source file.
 
 To gain understanding of specific aspects of the app (e.g, routing), it is recommended to read the respective source files.
-DRF abstractions are heavily used, which allows most code to be self-documenting.
+DRF abstractions are heavily used for things like serialization, input validation, querying the database safely and more. This allows most code to be self-documenting.
 
 Usage of less common Django/DRF funcitonality is documented inline in each source file, with comments linking to Django documentation. 
