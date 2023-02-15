@@ -1,8 +1,8 @@
 # Welcome to Mesimä
 
 <p align="center">
-  <img src="https://img.shields.io/github/workflow/status/amitkummer/mesima/Integration?label=integration">
-  <img src="https://img.shields.io/github/workflow/status/amitkummer/mesima/Create%20and%20publish%20a%20Docker%20image?label=image%20build">
+  <img src=https://img.shields.io/github/actions/workflow/status/amitkummer/mesima/integration.yml?label=Integration>
+  <img src="https://img.shields.io/github/actions/workflow/status/amitkummer/mesima/push.yml?label=Image%20Build">
   <img src="https://img.shields.io/github/v/tag/amitkummer/mesima">
   <img src="https://img.shields.io/github/license/amitkummer/mesima">
 </p>
